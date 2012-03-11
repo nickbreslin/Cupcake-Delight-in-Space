@@ -1,33 +1,21 @@
 $(function() {
-    cupcake1 = new Object();
+    
+    
+    cupcake1          = new Object();
     cupcake1.nickname = "#fff";
-    cupcake1.need = [3,3,3,3];
-    cupcake1.done = false;
-    cupcake1.location = -1;
     cupcake1.rotate = 10;
-    cupcake2 = new Object();
+    
+    cupcake2          = new Object();
     cupcake2.nickname = "#C35917";
-    cupcake2.need = [3,3,3,3];
-    cupcake2.done = false;
-    cupcake2.location = -1;
-    cupcake2.rotate = 60;
+    cupcake2.rotate   = 60;
 
-    cupcake3 = new Object();
+    cupcake3          = new Object();
     cupcake3.nickname = "#D5145A";
-    cupcake3.need = [3,3,3,3];
-    cupcake3.done = false;
-    cupcake3.location = -1;
-    cupcake3.rotate = 200;
-    cupcake4 = new Object();
+    cupcake3.rotate   = 200;
+    
+    cupcake4          = new Object();
     cupcake4.nickname = "#13B7A7";
-    cupcake4.need = [3,3,3,3];
-    cupcake4.done = false;
-    cupcake4.location = -1;
-    cupcake4.floating = true;
-    cupcake4.rotate = 100;
-
-
-
+    cupcake4.rotate   = 100;
 
     cupcakes = [];
     cupcakes[0] = cupcake1;
@@ -37,34 +25,32 @@ $(function() {
 
 
 
-    planet1 = new Object();
-    planet1.need = "#fff";
+
+
+    planet1           = new Object();
+    planet1.need      = "#D5145A";
     planet1.countdown = 0;
 
-    planet2 = new Object();
-    planet2.need = "#13B7A7";
+    planet2           = new Object();
+    planet2.need      = "#13B7A7";
     planet2.countdown = 0;
 
-    planet3 = new Object();
-    planet3.need = "#D5145A";
+    planet3           = new Object();
+    planet3.need      = "#C35917";
     planet3.countdown = 0;
 
-    planet4 = new Object();
-    planet4.need = "#C35917";
+    planet4           = new Object();
+    planet4.need      = "#fff";
     planet4.countdown = 0;
-
-    function getNewColor()
-    {
-    
-    }
-
-
 
     planets = [];
     planets[0] = planet1;
     planets[1] = planet2; 
     planets[2] = planet3; 
     planets[3] = planet4;
+
+
+
 
     Game = new function() {
 
@@ -180,7 +166,6 @@ $(function() {
 		   $(ui.draggable).remove();
 		   var pid = $(this).attr('id');
    		   var pf = parseInt(pid.replace("planet-", ""));
-		   cupcakes[f].location = pf;
            planets[pf].countdown=10;
            
            console.log(planets[pf].need+":"+cupcakes[f].nickname);

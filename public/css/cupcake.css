@@ -86,30 +86,30 @@ body {
  * Planet Faces (Placement)
  *
  */
-#planet-face-0 {
+#planet-face-0 { /* pink */
     margin-left: 35px;
     margin-top:  60px;
     height:      75px;
     width:       110px;
 }
 
-#planet-face-1 {
+#planet-face-1 { /* blue */
     margin-left: 35px;
     margin-top:  60px;
     height:      75px;
     width:       110px;
 }
 
-#planet-face-2 {
+#planet-face-2 { /* yellow */
     margin-left: 35px;
     margin-top:  60px;
     height:      75px;
     width:       110px;
 }
 
-#planet-face-3 {
+#planet-face-3 { /* green */
     margin-left: 10px;
-    margin-top:  10px;
+    margin-top:  30px;
     height:      75px;
     width:       110px;
 }
