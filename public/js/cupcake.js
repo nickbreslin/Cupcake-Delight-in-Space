@@ -1,60 +1,20 @@
 $(function() {
-    
-    
-    cupcake1          = new Object();
-    cupcake1.nickname = "#fff";
-    cupcake1.rotate = 10;
-    
-    cupcake2          = new Object();
-    cupcake2.nickname = "#C35917";
-    cupcake2.rotate   = 60;
 
-    cupcake3          = new Object();
-    cupcake3.nickname = "#D5145A";
-    cupcake3.rotate   = 200;
-    
-    cupcake4          = new Object();
-    cupcake4.nickname = "#13B7A7";
-    cupcake4.rotate   = 100;
-
-    cupcakes = [];
-    cupcakes[0] = cupcake1;
-    cupcakes[1] = cupcake2; 
-    cupcakes[2] = cupcake3; 
-    cupcakes[3] = cupcake4;
+    var cupcakes = [];
+    cupcakes.push({ flavour : "#FFFFFF", rotation : 10  });
+    cupcakes.push({ flavour : "#C35917", rotation : 60  });
+    cupcakes.push({ flavour : "#D5145A", rotation : 200 });
+    cupcakes.push({ flavour : "#13B7A7", rotation : 100 });
 
 
-
-
-
-    planet1           = new Object();
-    planet1.need      = "#D5145A";
-    planet1.countdown = 0;
-
-    planet2           = new Object();
-    planet2.need      = "#13B7A7";
-    planet2.countdown = 0;
-
-    planet3           = new Object();
-    planet3.need      = "#C35917";
-    planet3.countdown = 0;
-
-    planet4           = new Object();
-    planet4.need      = "#fff";
-    planet4.countdown = 0;
-
-    planets = [];
-    planets[0] = planet1;
-    planets[1] = planet2; 
-    planets[2] = planet3; 
-    planets[3] = planet4;
-
-
+    var planets = [];
+    planets.push({ flavour : "#D5145A", countdown : 0 });
+    planets.push({ flavour : "#13B7A7", countdown : 0 });
+    planets.push({ flavour : "#C35917", countdown : 0 });
+    planets.push({ flavour : "#FFFFFF", countdown : 0 });
 
 
     Game = new function() {
-
-    	this.state = {};
 	
     	this.init = function() {
     	    Game.main();
@@ -62,27 +22,21 @@ $(function() {
             Game.floatInSpace('#cupcake-1');
             Game.floatInSpace('#cupcake-2');
             Game.floatInSpace('#cupcake-3');
-            $('.planet a').tooltip('show');
         
             $('.face').addClass('face-hungry');
         
         
             $( ".cupcake" ).draggable({
-        	        start : function(event, ui) {
-        	            $(this).stop();
+        	    start : function(event, ui) {
+        	        $(this).stop();
+                },
+                stop : function(event, ui) {
+        	        Game.floatInSpace(this);
+                },
+            });
 
-                    }
-                });
 
-
-
-
-                $( "#container-space" ).droppable({
-            		drop: function( event, ui ) {
-        		   }
-            	});
-
-            	$('a').tooltip({'trigger':'manual', 'animation':false});
+            $('.planet a').tooltip({'trigger':'manual', 'animation':false}).tooltip('show');
         }
     
         this.main = function(){                
@@ -98,7 +52,7 @@ $(function() {
                    }
                    else
                    {
-                       var want = "<span style='color:"+planets[index].need+"'>&#10084;</span>";
+                       var want = "<span style='color:"+planets[index].flavour+"'>&#10084;</span>";
                        $('.planet a').eq(index).attr('data-original-title', want);
                        //$('.planet a').eq(index).tooltip('hide').tooltip('show');
                    }
@@ -123,8 +77,8 @@ $(function() {
             {
                 step: function()
                 {
-                    Game.rotate(id, cupcakes[f].rotate);
-                    cupcakes[f].rotate += 0.3;
+                    Game.rotate(id, cupcakes[f].rotation);
+                    cupcakes[f].rotation += 0.3;
                 },
                 complete : function() {
                     Game.floatInSpace(this);
@@ -168,8 +122,7 @@ $(function() {
    		   var pf = parseInt(pid.replace("planet-", ""));
            planets[pf].countdown=10;
            
-           console.log(planets[pf].need+":"+cupcakes[f].nickname);
-           if(planets[pf].need == cupcakes[f].nickname)
+           if(planets[pf].flavour == cupcakes[f].flavour)
            {
                console.log("MATCH");
                $('.face', this ).
