@@ -8,24 +8,43 @@ $(function() {
 
 
     var planets = [];
-    planets.push({ flavour : "#D5145A", countdown : 0 });
-    planets.push({ flavour : "#13B7A7", countdown : 0 });
-    planets.push({ flavour : "#C35917", countdown : 0 });
-    planets.push({ flavour : "#FFFFFF", countdown : 0 });
+    planets.push({ flavour : "#D5145A" });
+    planets.push({ flavour : "#13B7A7" });
+    planets.push({ flavour : "#C35917" });
+    planets.push({ flavour : "#FFFFFF" });
 
 
     Game = new function() {
-	
+	    
+	    var supportRotate = false;
+	    
     	this.init = function() {
-    	    Game.main();
-            Game.floatInSpace('#cupcake-0');
-            Game.floatInSpace('#cupcake-1');
-            Game.floatInSpace('#cupcake-2');
-            Game.floatInSpace('#cupcake-3');
+            this.determineSupport();
+            this.initCupcakes();
+    	    this.initPlanets();
+
+            // Tooltips
+            $('.planet a').tooltip({
+                'trigger'  : 'manual',
+                'animation': false
+            })
+            .tooltip('show');
+            
+            // Starting Modal
+            $('#myModal').modal({'keyboard':false});
+        }
         
-            $('.face').addClass('face-hungry');
+        /*
+         * initCupcakes
+         */
+        this.initCupcakes = function() {
+            // Float Cupcakes
+            $.each($('.cupcake'), function(index, value) {
+                Game.floatInSpace(value);
+                Game.setFlavour(index);
+            });
         
-        
+            // Make Cupcakes Draggable
             $( ".cupcake" ).draggable({
         	    start : function(event, ui) {
         	        $(this).stop();
@@ -34,60 +53,91 @@ $(function() {
         	        Game.floatInSpace(this);
                 },
             });
-
-
-            $('.planet a').tooltip({'trigger':'manual', 'animation':false}).tooltip('show');
         }
-    
-        this.main = function(){                
         
-       
-           for(index in planets)
-           {
-                   if(planets[index].countdown > 1)
-                   {
-                       //planets[index].countdown--;
-                     //  $('.planet a').eq(index).attr('data-original-title', "");
-                     //  $('.planet a').eq(index).tooltip('hide');
-                   }
-                   else
-                   {
-                       var want = "<span style='color:"+planets[index].flavour+"'>&#10084;</span>";
-                       $('.planet a').eq(index).attr('data-original-title', want);
-                       //$('.planet a').eq(index).tooltip('hide').tooltip('show');
-                   }
+        /*
+         * initPlanets
+         */
+        this.initPlanets = function() {
+        	$( ".planet" ).droppable({
+        		drop: function( event, ui ) {
+        		    var cakeIdString = $(ui.draggable).attr('id');
+        		    var cakeId = parseInt(cakeIdString.replace("cupcake-", ""));
 
-           }
-            setTimeout("Game.main()",1000); 
+        		    $(ui.draggable).remove();
+
+        		    var planetIdString = $(this).attr('id');
+           		    var planetId = parseInt(planetIdString.replace("planet-", ""));
+
+                    if(planets[planetId].flavour == cupcakes[cakeId].flavour)
+                    {
+                        $('.face', this )
+                            .removeClass('face-hungry face-angry')
+           			        .addClass('face-happy');
+           			   
+           			    $('a', this )
+            		        .tooltip('hide');
+                    }
+                    else
+                    {
+                        $('.face', this )
+                            .removeClass('face-hungry face-happy')
+                            .addClass('face-angry');
+                    }
+        		}
+        	});
+        }
+        
+        this.determineSupport = function()
+        {
+            if ( navigator.userAgent.indexOf('Chrome') != -1
+            || navigator.userAgent.indexOf('Firefox') != -1)
+            {
+                this.supportRotate = true;
+            }
+        }
+        
+        /*
+         * setFlavour
+         */
+        this.setFlavour = function(index) {
+            var want = "<span style='color:"+planets[index].flavour+"'>&#10084;</span>";
+            $('.planet a').eq(index).attr('data-original-title', want); 
         }
     
-    
+        /*
+         * floatInSpace
+         */    
         this.floatInSpace = function(ele) {
-            var id = $(ele).attr('id');
-    		var f = parseInt(id.replace("cupcake-", ""));
-    		cupcakes[f].floating = true;
+            var elementStringId = $(ele).attr('id');
+    		var elementId = parseInt(elementStringId.replace("cupcake-", ""));
         
-            randTop = Game.getRand();
-            randLeft = Game.getRand();
-            randTime = (Game.getRand() * 20) + 5000;
+            randTop = this.getRand();
+            randLeft = this.getRand();
+            randTime = (this.getRand() * 20) + 5000;
+            
             $(ele).animate({
                 left: randTop,
                 top: randLeft,
             },
             {
-                step: function()
-                {
-                    Game.rotate(id, cupcakes[f].rotation);
-                    cupcakes[f].rotation += 0.3;
+                step: function() {
+                    if(Game.supportRotate)
+                    {
+                        Game.rotate(elementStringId, cupcakes[elementId].rotation);
+                        cupcakes[elementId].rotation += 0.3;
+                    }
                 },
                 complete : function() {
                     Game.floatInSpace(this);
-        
-                    $(ele).css('-webkit-transform:rotate','90');
-                },duration: randTime
+                },
+                duration: randTime
             });
       }
   
+      /*
+       * rotate
+       */
       this.rotate = function(id, value)
       {
           document.getElementById(id).style.webkitTransform="rotate(" + value + "deg)";
@@ -96,7 +146,10 @@ $(function() {
           document.getElementById(id).style.OTransform="rotate(" + value + "deg)";
           document.getElementById(id).style.transform="rotate(" + value + "deg)";      
       }
-  
+
+      /*
+       * getRand
+       */
       this.getRand = function()
       {
           var numLow = 0;
@@ -109,34 +162,8 @@ $(function() {
           return numRand;
       }
     };
-            $('#myModal').modal({'keyboard':false});
+    
     Game.init();
     
-    
-	$( ".planet" ).droppable({
-		drop: function( event, ui ) {
-		   var id = $(ui.draggable).attr('id');
-		   var f = parseInt(id.replace("cupcake-", ""));
-		   $(ui.draggable).remove();
-		   var pid = $(this).attr('id');
-   		   var pf = parseInt(pid.replace("planet-", ""));
-           planets[pf].countdown=10;
-           
-           if(planets[pf].flavour == cupcakes[f].flavour)
-           {
-               console.log("MATCH");
-               $('.face', this ).
-   			    removeClass('face-hungry, face-angry').addClass('face-happy');
-   			    $('a', this )
-    			    .tooltip('hide');
-           }
-           else
-           {
-               console.log("NO MATCH");
-               $('.face', this ).
-      			    removeClass('face-hungry, face-happy').addClass('face-angry');
-           }
-			
-		}
-	});
+
 });
