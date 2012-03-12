@@ -46,10 +46,10 @@ body {
  *
  */
 .planet {
-    z-index: 10;
+    z-index:  10;
     position: absolute;
-    height:100px;
-    width:100px;
+    height:   100px;
+    width:    100px;
 }
 
 .planet-pink {
@@ -121,7 +121,7 @@ body {
  *
  */
 .face {
-    background-image: url('../img/planet-faces.png');
+    background-image:  url('../img/planet-faces.png');
     background-repeat: no-repeat;
 }
 
@@ -147,8 +147,8 @@ body {
 .cupcake {
     background-image:  url('../img/shrooms.png');
     background-repeat: no-repeat;
-    z-index:  1000;
-    position: absolute;
+    z-index:           1000;
+    position:          absolute;
 }
 
 .cupcake-shiro {
@@ -207,10 +207,10 @@ body {
 .madeby {
     background-image:  url('../img/madeby.png');
     background-repeat: no-repeat;
-    width:    318px;
-    height:   125px;
-    position: absolute;
-    z-index:  50;
-    right:    0;
-    bottom:   0;
+    width:             318px;
+    height:            125px;
+    position:          absolute;
+    z-index:           50;
+    right:             0;
+    bottom:            0;
 }
