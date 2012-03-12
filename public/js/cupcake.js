@@ -17,7 +17,11 @@ $(function() {
     Game = new function() {
 	    
 	    var supportRotate = false;
-	    
+
+
+        /*
+         * init
+         */
     	this.init = function() {
             this.determineSupport();
             this.initCupcakes();
@@ -33,7 +37,8 @@ $(function() {
             // Starting Modal
             $('#myModal').modal({'keyboard':false});
         }
-        
+
+
         /*
          * initCupcakes
          */
@@ -54,7 +59,8 @@ $(function() {
                 },
             });
         }
-        
+
+
         /*
          * initPlanets
          */
@@ -87,7 +93,11 @@ $(function() {
         		}
         	});
         }
-        
+
+
+        /*
+         * determineSupport
+         */
         this.determineSupport = function()
         {
             if ( navigator.userAgent.indexOf('Chrome') != -1
@@ -96,7 +106,8 @@ $(function() {
                 this.supportRotate = true;
             }
         }
-        
+
+
         /*
          * setFlavour
          */
@@ -104,7 +115,8 @@ $(function() {
             var want = "<span style='color:"+planets[index].flavour+"'>&#10084;</span>";
             $('.planet a').eq(index).attr('data-original-title', want); 
         }
-    
+
+
         /*
          * floatInSpace
          */    
@@ -133,8 +145,9 @@ $(function() {
                 },
                 duration: randTime
             });
-      }
-  
+        }
+
+
       /*
        * rotate
        */
@@ -146,6 +159,7 @@ $(function() {
           document.getElementById(id).style.OTransform="rotate(" + value + "deg)";
           document.getElementById(id).style.transform="rotate(" + value + "deg)";      
       }
+
 
       /*
        * getRand
