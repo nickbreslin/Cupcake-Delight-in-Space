@@ -2,15 +2,44 @@ h1. Cupcake Delight in SPAAAAACE
 
 #hackwhiteday HTML/Javascript Game
 
+Nominated for __Most Nauseatingly Cute__ Award.
+
+h2. Authors
+
 h3. Nick Breslin, Programming
 
-h3. Alexa, Design & Illustration
+E-Mail: "nickbreslin@gmail.com":mailto:nickbreslin@gmail.com
+Twitter: "@EtiquetteStudio":http://twitter.com/#!/EtiquetteStudio
+Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
+
+h3. Alexa Booth, Design & Illustration
 
 h2. Setup
+
+To play, open *index.html* in your browser. All assets are stored locally, so you do not need an active Internet connection.
+
+h2. License
+
+The intention of sharing this project is for educational purposes.
+
+* Original code assets (.css, .html, .js files) are under "MIT license":http://copyfree.org/licenses/mit/license.txt.
+* Art assets (.png and .jpg files) are not available for re-use or modification in any way, shape or form. They are distributed with the releases to maintain functional integrity.
+* cupcake.ico (favicon), credited to "axdxnNadia":http://www.favicon.cc/?action=icon_list&user_id=126491 from favicon.cc under Creative Commons license.
+* Third-party resources (jQuery, Bootstrap) include details for their own licenses.
 
 
 h2. Releases & Changelog
 
-h3. Hackathon Release
+h3. v1.0 - Hackathon Release
 
-`
+* Created during "White Day Hackathon":http://hackwhiteday.eventbrite.com/
+
+
+h3. v1.1 - Public Release
+
+The objective of this release was to provide a clean and simplified version of the HTML, CSS and Javascript for others to easily follow and learn from.
+
+* [FIXED] Cupcakes not appearing in Safari.
+* [FIXED] Cupcake rotation resumes after drag/drop event.
+* [CHANGE] Cupcake rotation implemented only for Chrome and Firefox.
+* [CHANGE] All third-party scripts are stored locally instead of CDN hosted.
