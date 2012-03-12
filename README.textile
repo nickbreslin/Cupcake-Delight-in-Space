@@ -21,7 +21,7 @@ h2. License
 
 The intention of sharing this project is for educational purposes.
 
-* Original code assets (.css, .html, .js files) are under "MIT license":http://copyfree.org/licenses/mit/license.txt
+* Original code assets (.css, .html, .js files) are under "MIT license":http://copyfree.org/licenses/mit/license.txt.
 * Art assets (.png and .jpg files) are not available for re-use or modification in any way, shape or form. They are distributed with the releases to maintain functional integrity.
 * cupcake.ico (favicon), credited to "axdxnNadia":http://www.favicon.cc/?action=icon_list&user_id=126491 from favicon.cc under Creative Commons license.
 * Third-party resources (jQuery, Bootstrap) include details for their own licenses.
