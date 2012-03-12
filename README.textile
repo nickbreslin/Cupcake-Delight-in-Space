@@ -21,8 +21,8 @@ h2. License
 
 The intention of sharing this project is for educational purposes.
 
-* Code assets (.css, .html, .js files) are licensed as source-available, not intended for re-use.
-* Art assets (.png and .jpg files) are not available for re-use or modification in any way, shape or form.
+* Original code assets (.css, .html, .js files) are under "MIT license":http://copyfree.org/licenses/mit/license.txt
+* Art assets (.png and .jpg files) are not available for re-use or modification in any way, shape or form. They are distributed with the releases to maintain functional integrity.
 * cupcake.ico (favicon), credited to "axdxnNadia":http://www.favicon.cc/?action=icon_list&user_id=126491 from favicon.cc under Creative Commons license.
 * Third-party resources (jQuery, Bootstrap) include details for their own licenses.
 
@@ -36,7 +36,7 @@ h3. v1.0 - Hackathon Release
 
 h3. v1.1 - Public Release
 
-The objective of this release was to provide a clean and simplified version of the HTML, CSS and Javascript for others to
+The objective of this release was to provide a clean and simplified version of the HTML, CSS and Javascript for others to easily follow and learn from.
 
 * [FIXED] Cupcakes not appearing in Safari.
 * [CHANGE] Cupcake rotation implemented only for Chrome and Firefox.
