@@ -124,9 +124,9 @@ $(function() {
             var elementStringId = $(ele).attr('id');
     		var elementId = parseInt(elementStringId.replace("cupcake-", ""));
         
-            randTop = this.getRand();
+            randTop  = this.getRand();
             randLeft = this.getRand();
-            randTime = (this.getRand() * 20) + 5000;
+            randTime = (this.getRand() * 10) + 5000;
             
             $(ele).animate({
                 left: randTop,

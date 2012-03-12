@@ -190,10 +190,11 @@ body {
  *
  ****************************************************************************/
 .start-modal {
-    width:      874px;
-    background: none;
-    max-height: none;
-    z-index:    9999;
+    margin-left: -407px;
+    width:        874px;
+    background:   none;
+    max-height:   none;
+    z-index:      9999;
     
 }
 
