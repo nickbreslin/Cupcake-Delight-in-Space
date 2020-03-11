@@ -4,15 +4,13 @@ h1. Cupcake Delight in SPAAAAACE
 
 Nominated for __Most Nauseatingly Cute__ Award.
 
-*Play Now* at "cupcakes.etiquettestudio.com":http://cupcakes.etiquettestudio.com
+*Play Now* at https://nickbreslin.github.io/Cupcake-Delight-in-Space/
 
 h2. Authors
 
 h3. Nick Breslin, Programming
 
 E-Mail: "nickbreslin@gmail.com":mailto:nickbreslin@gmail.com
-Twitter: "@EtiquetteStudio":http://twitter.com/#!/EtiquetteStudio
-Web Site: "etiquettestudio.com":http://www.etiquettestudio.com
 
 h3. Alexa Booth, Design & Illustration
 
